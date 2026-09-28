@@ -1,0 +1,30 @@
+name: user_repository
+description: A new Flutter package for user repository.
+version: 0.0.1
+
+environment:
+  sdk: ^3.0.0
+  flutter: ">=3.0.0"
+
+# 👈 ဒီအပိုင်း ထည့်ပေးရန် လိုအပ်ပါသည်
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase Packages
+  firebase_core: ^2.32.0
+  firebase_auth: ^4.20.0
+  cloud_firestore: ^4.17.5
+  firebase_storage: ^11.7.7
+
+  # Utilities
+  rxdart: ^0.28.0
+  path: ^1.9.0
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
