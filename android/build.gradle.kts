@@ -1,3 +1,9 @@
+plugins {
+    // Google Services Gradle plugin ကို ထည့်သွင်းခြင်း
+    id("com.google.gms.google-services") version "4.4.2" apply false
+}
+
+
 allprojects {
     repositories {
         google()
