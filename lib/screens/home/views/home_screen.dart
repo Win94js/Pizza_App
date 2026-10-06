@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_app/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:pizza_app/screens/home/views/detail_screen.dart';
 
 
 
@@ -17,8 +18,8 @@ class HomeScreen extends StatelessWidget {
         title: Row(
           children: [
             SizedBox(
-              width: 60,
-              height: 60,
+              width: 40,
+              height: 40,
               child: Image.asset(
                 "assets/pizza-9.jpg",
                 fit: BoxFit.contain,
@@ -52,63 +53,141 @@ class HomeScreen extends StatelessWidget {
             ),
             itemCount: 8,
             itemBuilder: (context, int i){
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      blurRadius: 5,
-                      offset: Offset(3, 3)
-                    )
-                  ]
+              return Material(
+                elevation:  3,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
                 ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      "assets/pizza-1.jpg"
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 6),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(30)
-                            ),
-                            child: const Text(
-                              "NON-VEG",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 9,
-                              ),
-                            ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(20),
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                            builder: (BuildContext context) => const DetailsScreen()
+                        ));
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top:12.0, bottom: 8.0),
+                        child: Center(
+                          child: Image.asset(
+                            "assets/pizza-1.jpg",
+                            height: 105,                // 👈 Card အချိုးအစားနှင့် သင့်တော်သော အမြင့် (height) သတ်မှတ်ပါ
+                                    //                          width: double.infinity,     // 👈 Card အကျယ်အပြည့် ယူစေရန်
+                            width: 105,
+
+                            fit: BoxFit.contain,          // 👈 ပုံမပြဲဘဲ အကွက်ပြည့် အချိုးကျ ဖြတ်ညှိပေးသည်
+
                           ),
-                          const SizedBox(width: 6),
-                          Container(
-                            padding: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 6),
-                            decoration: BoxDecoration(
-                                color: Colors.green.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(30)
-                            ),
-                            child: const Text(
-                              " BALANCE",
-                              style: TextStyle(
-                                color: Colors.green,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 10,
-                              ),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0,vertical: 6.0),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 5),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(30)
+                                ),
+                                child: const Text(
+                                  "NON-VEG",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 8.5,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 4),
+                              Container(
+                                padding: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 5),
+                                decoration: BoxDecoration(
+                                    color: Colors.green.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(30)
+                                ),
+                                child: const Text(
+                                  "🌶️BALANCE",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 8.5,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Text(
+                          "Cheesy Marvel",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Text(
+                          "Crafting Joy : Your Pizza , your rules, best taste!",
+                          style: TextStyle(
+                            color: Colors.grey.shade700,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "\$12.00",
+                                  style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700
+                                  ),
+                                ),
+                                SizedBox(width: 3,),
+                                Text(
+                                  "\$15.00",
+                                  style: TextStyle(
+                                    color: Colors.grey.shade500,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w700,
+                                    decoration: TextDecoration.lineThrough
+                                  ),
+                                ),
+
+                              ],
+
+                            ),
+                            IconButton(
+                                onPressed: (){},
+
+                                icon: Icon(CupertinoIcons.add_circled_solid))
+                          ],
+
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }
