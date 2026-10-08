@@ -38,7 +38,9 @@ class MyMacroWidget extends StatelessWidget {
                   color: Colors.redAccent,),
                 SizedBox(height: 4,),
                 Text(
-                  "$value $title",
+                  title == "Calories"
+                  ? "$value $title" :
+                  "${value}g $title",
                   style: TextStyle(
                     fontSize: 8,
 
